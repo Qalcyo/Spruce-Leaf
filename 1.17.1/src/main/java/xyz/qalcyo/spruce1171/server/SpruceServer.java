@@ -4,7 +4,7 @@ import xyz.qalcyo.simpleeventbus.SimpleEventBus;
 
 public class SpruceServer implements xyz.qalcyo.spruce.server.SpruceServer {
 
-    private static SpruceServer INSTANCE = new SpruceServer();
+    private static final SpruceServer INSTANCE = new SpruceServer();
     private static boolean initialized = false;
 
     private SimpleEventBus eventBus;

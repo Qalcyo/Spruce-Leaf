@@ -49,7 +49,6 @@ allprojects {
             shade('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1-native-mt')
             shade('org.jetbrains.kotlin:kotlin-stdlib-jdk8')
 
-            implementation('org.spongepowered:mixin:0.7.11-SNAPSHOT')
             shade('com.squareup.okhttp3:okhttp:4.9.1')
         }
 

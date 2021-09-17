@@ -1,0 +1,6 @@
+{
+    "package": "xyz.qalcyo.spruce1171",
+    "client": [
+        "client.mixins.MinecraftClientMixin"
+    ]
+}
