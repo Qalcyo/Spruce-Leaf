@@ -1,5 +1,16 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+    }
+}
+
 rootProject.name = "Spruce Leaf"
 include(
         'core',
-        '1.8.9'
+        '1.17.1'
 )

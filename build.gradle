@@ -11,49 +11,53 @@ allprojects {
     apply plugin: "org.jetbrains.kotlin.jvm"
     apply plugin: "java"
 
-    configurations {
-        shade
-        implementation.extendsFrom(shade)
+    afterEvaluate {
+        configurations {
+            shade
+            implementation.extendsFrom(shade)
+        }
+
+        repositories {
+            mavenCentral()
+
+            maven {
+                url = "http://maven.deftu.xyz/repository/maven-public/"
+                allowInsecureProtocol = true
+            }
+            maven {
+                url = "https://repo.sk1er.club/repository/maven-public/"
+            }
+            maven {
+                url = "https://repo.spongepowered.org/maven/"
+            }
+            maven {
+                url = "https://jitpack.io/"
+            }
+        }
+
+        dependencies {
+            shade('xyz.qalcyo.eventbus:SimpleEventBus:3.1')
+            shade('xyz.qalcyo.simpleconfig:SimpleConfig:3.5')
+            shade('xyz.qalcyo.simpleconfig:SimpleConfig:3.5:settings')
+            shade('xyz.qalcyo.json:JSON+:2.12')
+            shade('xyz.qalcyo.json:JSON+:2.12:files')
+            shade('xyz.qalcyo.json:JSON+:2.12:kotlin')
+            shade('xyz.qalcyo.json:JSON+:2.12:serialization')
+            shade('xyz.qalcyo.json:JSON+:2.12:utilities')
+            shade('xyz.qalcyo.mango:Mango:1.6')
+
+            shade('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1-native-mt')
+            shade('org.jetbrains.kotlin:kotlin-stdlib-jdk8')
+
+            implementation('org.spongepowered:mixin:0.7.11-SNAPSHOT')
+            shade('com.squareup.okhttp3:okhttp:4.9.1')
+        }
+
+        shadowJar {
+            configurations = [project.configurations.shade]
+            archiveClassifier.set('')
+        }
+
+        jar.finalizedBy(shadowJar)
     }
-
-    repositories {
-        mavenCentral()
-
-        maven {
-            url = "http://maven.deftu.xyz/repository/maven-public/"
-            allowInsecureProtocol = true
-        }
-        maven {
-            url = "https://repo.sk1er.club/repository/maven-public/"
-        }
-        maven {
-            url = "https://repo.spongepowered.org/maven/"
-        }
-        maven {
-            url = "https://jitpack.io/"
-        }
-    }
-
-    dependencies {
-        shade('xyz.qalcyo.eventbus:SimpleEventBus:3.1')
-        shade('xyz.qalcyo.simpleconfig:SimpleConfig:3.5')
-        shade('xyz.qalcyo.simpleconfig:SimpleConfig:3.5:settings')
-        shade('xyz.qalcyo.json:JSON+:2.12')
-        shade('xyz.qalcyo.json:JSON+:2.12:files')
-        shade('xyz.qalcyo.json:JSON+:2.12:kotlin')
-        shade('xyz.qalcyo.json:JSON+:2.12:serialization')
-        shade('xyz.qalcyo.json:JSON+:2.12:utilities')
-        shade('xyz.qalcyo.mango:Mango:1.6')
-
-        shade('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1-native-mt')
-        shade('org.jetbrains.kotlin:kotlin-stdlib-jdk8')
-
-        implementation('org.spongepowered:mixin:0.7.11-SNAPSHOT')
-        shade('com.squareup.okhttp3:okhttp:4.9.1')
-    }
-}
-
-shadowJar {
-    configurations = [project.configurations.shade]
-    archiveClassifier.set('')
 }

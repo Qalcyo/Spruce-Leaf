@@ -1,4 +1,4 @@
-package xyz.qalcyo.spruce189.server;
+package xyz.qalcyo.spruce1171.server;
 
 import xyz.qalcyo.simpleeventbus.SimpleEventBus;
 
